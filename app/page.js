@@ -155,17 +155,17 @@ export default function Page() {
       </header>
 
       <div className="container mt-5">
-        <div className="col-10 mx-auto">
+        <div className="col-12 col-lg-10 mx-auto">
           <input
             type="text"
             className="form-control mb-50"
             placeholder="Search by name..."
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <div className="col-12 mx-auto d-flex justify-content-between">
-            <div className="py-25">
+          <div className="col-12 mx-auto d-flex flex-column flex-lg-row justify-content-between">
+            <div className="d-flex py-25  ">
               <button
-                className="btn btn-secondary me-2"
+                className="btn btn-secondary me-2  "
                 onClick={() => setSortKey("name")}
               >
                 Sort by Name
@@ -178,8 +178,8 @@ export default function Page() {
               </button>
             </div>
 
-            <div className="d-flex justify-content-between">
-              <p className="pb-50">Min Price: 0$</p>
+            <div className="d-flex flex-column flex-lg-row justify-content-lg-between">
+              <p className="pb-50 pb-xs-0 pt-xs-30">Min Price: 0$</p>
               <Box sx={{ width: 300, margin: "auto" }}>
                 <Slider
                   getAriaLabel={() => "Price range"}
@@ -195,11 +195,11 @@ export default function Page() {
             </div>
           </div>
         </div>
-        <ul className="list-group mt-3 col-10 mx-auto">
+        <ul className="list-group   mt-3 col-12 col-lg-10 mx-auto">
           {filteredItems.map((item) => (
             <li
               key={item.id}
-              className="col-12 list-group-item p-0 d-flex justify-content-between mb-5"
+              className="col-12 list-group-item flex-column flex-lg-row align-items-center p-0 d-flex justify-content-between "
             >
               <div style={{ borderRight: "1px solid #ccc" }}>
                 <img src={item.img} alt={item.name} width="200" />
@@ -208,9 +208,16 @@ export default function Page() {
                 {" "}
                 <h5>{item.name}</h5>
                 <p>{item.description}</p>
-                <p className="text-right pt-3 fs-1"><strong>${item.price}</strong></p>
+                <p className="d-flex justify-content-lg-end pt-3 pb-3 pb-lg-0 fs-1">
+                  <strong>${item.price}</strong>
+                </p>
               </div>
-              <Button onClick={() => handleAddToCart(item)}>Add to Cart</Button>
+              <Button
+                 
+                onClick={() => handleAddToCart(item)}
+              >
+                Add to Cart
+              </Button>
             </li>
           ))}
         </ul>
